@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-# pong_1_3.py: Rebote de la pelota
-from modulo_pelota import *
-=======
-
-# pong_1_4.py: Reiniciar pelota al salir por los lados
->>>>>>> 1243fba201c3a30d4a51f2aa5eb3047919b8edee
+# pong_1_5.py: Clase RaquetaPong
 
 import random
 import pygame
@@ -17,8 +11,6 @@ FPS = 60  # Fotogramas por segundo
 BLANCO = (255, 255, 255)  # Color del fondo de la ventana (RGB)
 
 
-<<<<<<< HEAD
-=======
 class PelotaPong:
     def __init__(self, fichero_imagen):
         # --- Atributos de la Clase ---
@@ -57,7 +49,26 @@ class PelotaPong:
         self.dir_x = -self.dir_x
         self.dir_y = random.choice([-5, 5])
 
->>>>>>> 1243fba201c3a30d4a51f2aa5eb3047919b8edee
+
+class RaquetaPong:
+    def __init__(self):
+        self.imagen = pygame.image.load("raqueta.png").convert_alpha()
+
+        # --- Atributos de la Clase ---
+
+        # Dimensiones de la Raqueta
+        self.ancho, self.alto = self.imagen.get_size()
+
+        # Posición de la Raqueta
+        self.x = 0
+        self.y = VENTANA_VERT / 2 - self.alto / 2
+
+        # Dirección de movimiento de la Raqueta
+        self.dir_y = 0
+
+    def mover(self):
+        self.y += self.dir_y
+
 
 def main():
     # Inicialización de Pygame
@@ -65,9 +76,15 @@ def main():
 
     # Inicialización de la superficie de dibujo (display surface)
     ventana = pygame.display.set_mode((VENTANA_HORI, VENTANA_VERT))
-    pygame.display.set_caption("Pong 4")
+    pygame.display.set_caption("Pong 5")
 
     pelota = PelotaPong("bola_roja.png")
+
+    raqueta_1 = RaquetaPong()
+    raqueta_1.x = 60
+
+    raqueta_2 = RaquetaPong()
+    raqueta_2.x = VENTANA_HORI - 60 - raqueta_2.ancho
 
     # Bucle principal
     jugando = True
@@ -77,6 +94,8 @@ def main():
 
         ventana.fill(BLANCO)
         ventana.blit(pelota.imagen, (pelota.x, pelota.y))
+        ventana.blit(raqueta_1.imagen, (raqueta_1.x, raqueta_1.y))
+        ventana.blit(raqueta_2.imagen, (raqueta_2.x, raqueta_2.y))
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -87,9 +106,6 @@ def main():
 
     pygame.quit()
 
-<<<<<<< HEAD
-=======
 
 if __name__ == "__main__":
     main()
->>>>>>> 1243fba201c3a30d4a51f2aa5eb3047919b8edee
