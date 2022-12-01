@@ -1,6 +1,6 @@
-from modulo_pelota import *
-from modulo_juego import *
-from modulo_raqueta import *
+from modulos.modulo_pelota import *
+from modulos.modulo_juego import *
+from modulos.modulo_raqueta import *
 
 
 if __name__ == "__main__":
