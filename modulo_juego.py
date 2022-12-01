@@ -2,11 +2,16 @@
 from modulo_pelota import *
 from modulo_raqueta import *
 
-
 import random
 import pygame
 from pygame.locals import QUIT
 
+
+VENTANA_HORI = 800  # Ancho de la ventana
+VENTANA_VERT = 600  # Alto de la ventana
+FPS = 60  # Fotogramas por segundo
+BLANCO = (255, 255, 255)  # Color del fondo de la ventana (RGB)
+NEGRO = (0, 0, 0)  # Color del texto (RGB)
 
 def main():
     # Inicialización de Pygame
@@ -14,12 +19,12 @@ def main():
 
     # Inicialización de la superficie de dibujo (display surface)
     ventana = pygame.display.set_mode((VENTANA_HORI, VENTANA_VERT))
-    pygame.display.set_caption("Pong 9")
+    pygame.display.set_caption("Ping Pong")
 
     # Inicialización de la fuente
     fuente = pygame.font.Font(None, 60)
 
-    pelota = PelotaPong("bola_roja.png")
+    pelota= PelotaPong("bola_roja.png")
 
     raqueta_1 = RaquetaPong()
     raqueta_1.x = 60
@@ -42,7 +47,7 @@ def main():
         ventana.blit(raqueta_1.imagen, (raqueta_1.x, raqueta_1.y))
         ventana.blit(raqueta_2.imagen, (raqueta_2.x, raqueta_2.y))
 
-        texto = f"{pelota.puntuacion} : {pelota.puntuacion_ia}"
+        texto = (f"{pelota.puntuacion} : {pelota.puntuacion_ia}")
         letrero = fuente.render(texto, False, NEGRO)
         ventana.blit(letrero, (VENTANA_HORI / 2 - fuente.size(texto)[0] / 2, 50))
 
