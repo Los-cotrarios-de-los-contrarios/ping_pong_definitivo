@@ -1,5 +1,3 @@
-# pong_1_2.py: Clase PelotaPong
-
 import random
 import pygame
 from pygame.locals import QUIT
@@ -64,3 +62,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
