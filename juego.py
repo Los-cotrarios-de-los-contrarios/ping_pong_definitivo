@@ -1,3 +1,4 @@
+
 # pong_1_4.py: Reiniciar pelota al salir por los lados
 
 import random
@@ -81,8 +82,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-if __name__ == "__main__":
-    main()
-    
