@@ -1,3 +1,5 @@
+# pong_1_3.py: Rebote de la pelota
+
 import random
 import pygame
 from pygame.locals import QUIT
@@ -31,6 +33,16 @@ class PelotaPong:
         self.x += self.dir_x
         self.y += self.dir_y
 
+    def rebotar(self):
+        if self.x <= 0:
+            self.dir_x = -self.dir_x
+        if self.x + self.ancho >= VENTANA_HORI:
+            self.dir_x = -self.dir_x
+        if self.y <= 0:
+            self.dir_y = -self.dir_y
+        if self.y + self.alto >= VENTANA_VERT:
+            self.dir_y = -self.dir_y
+
 
 def main():
     # Inicialización de Pygame
@@ -38,7 +50,7 @@ def main():
 
     # Inicialización de la superficie de dibujo (display surface)
     ventana = pygame.display.set_mode((VENTANA_HORI, VENTANA_VERT))
-    pygame.display.set_caption("Pong 2")
+    pygame.display.set_caption("Pong 3")
 
     pelota = PelotaPong("bola_roja.png")
 
@@ -46,6 +58,7 @@ def main():
     jugando = True
     while jugando:
         pelota.mover()
+        pelota.rebotar()
 
         ventana.fill(BLANCO)
         ventana.blit(pelota.imagen, (pelota.x, pelota.y))
