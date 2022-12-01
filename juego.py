@@ -1,4 +1,4 @@
-# pong_1_6.py: Mover raqueta con teclado
+# pong_1_7.py: Golpe raqueta jugador humano
 
 import random
 import pygame
@@ -73,6 +73,16 @@ class RaquetaPong:
         if self.y + self.alto >= VENTANA_VERT:
             self.y = VENTANA_VERT - self.alto
 
+    def golpear(self, pelota):
+        if (
+            pelota.x < self.x + self.ancho
+            and pelota.x > self.x
+            and pelota.y + pelota.alto > self.y
+            and pelota.y < self.y + self.alto
+        ):
+            pelota.dir_x = -pelota.dir_x
+            pelota.x = self.x + self.ancho
+
 
 def main():
     # Inicialización de Pygame
@@ -80,7 +90,7 @@ def main():
 
     # Inicialización de la superficie de dibujo (display surface)
     ventana = pygame.display.set_mode((VENTANA_HORI, VENTANA_VERT))
-    pygame.display.set_caption("Pong 6")
+    pygame.display.set_caption("Pong 7")
 
     pelota = PelotaPong("bola_roja.png")
 
@@ -96,6 +106,7 @@ def main():
         pelota.mover()
         pelota.rebotar()
         raqueta_1.mover()
+        raqueta_1.golpear(pelota)
 
         ventana.fill(BLANCO)
         ventana.blit(pelota.imagen, (pelota.x, pelota.y))
