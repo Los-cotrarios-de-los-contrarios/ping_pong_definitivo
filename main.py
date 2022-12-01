@@ -5,5 +5,3 @@ from modulos.modulo_raqueta import *
 
 if __name__ == "__main__":
     main()
-    
-    
